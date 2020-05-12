@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     data: {
       currencies: [],
       amount: 0,
-      selectedCurrency: null,
+      currencyFromEuro: null,
+      currencyToEuro: null,
     },
     computed: {},
     mounted() {
@@ -16,8 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
       getCurrencies: function () {
         fetch("https://api.exchangeratesapi.io/latest")
           .then((res) => res.json())
-          .then((currencies) => (this.currencies = currencies));
+          .then((currencies) => (this.currencies = currencies.rates));
       },
+      convertToEuro: function () {},
     },
   });
 });
