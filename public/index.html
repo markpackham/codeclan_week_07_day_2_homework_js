@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/styles.css" />
     <script src="./js/bundle.js"></script>
-    <title>To Do List</title>
+    <title>Currency Converter</title>
   </head>
   <body>
     <div id="app">
@@ -40,12 +40,14 @@
           v-if="name === currencyFromEuro"
         >
           <p>{{ name }} : {{ value }}</p>
+          <p>{{ convertFromEuro }}</p>
         </li>
       </ul>
       <h3>Currency Converted To Euro</h3>
       <ul>
         <li v-for="(value, name) in currencies" v-if="name === currencyToEuro">
           <p>{{ name }} : {{ value }}</p>
+          <p>{{ convertToEuro }}</p>
         </li>
       </ul>
     </div>

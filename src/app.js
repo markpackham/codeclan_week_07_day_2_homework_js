@@ -6,10 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
     data: {
       currencies: [],
       amount: 0,
-      currencyFromEuro: null,
-      currencyToEuro: null,
+      currencyFromEuro: 0,
+      currencyToEuro: 0,
     },
-    computed: {},
+    computed: {
+      convertFromEuro: function () {
+        return this.amount * 100.0;
+      },
+      convertToEuro: function () {
+        return this.amount / 100.0;
+      },
+    },
     mounted() {
       this.getCurrencies();
     },
@@ -19,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
           .then((res) => res.json())
           .then((currencies) => (this.currencies = currencies.rates));
       },
-      convertToEuro: function () {},
     },
   });
 });
