@@ -5,20 +5,22 @@ document.addEventListener("DOMContentLoaded", () => {
     el: "#app",
     data: {
       currencies: [],
-      amount: 0,
+      currency: 0,
+      amount: 1,
       currencyFromEuro: 0,
-      currencyToEuro: 0,
+      currencyToEuro: 0.1,
     },
     computed: {
       convertFromEuro: function () {
-        return this.amount * 100.0;
+        return parseFloat(this.amount * this.currencyFromEuro).toFixed(2);
       },
       convertToEuro: function () {
-        return this.amount / 100.0;
+        return parseFloat(this.amount / this.currencyToEuro).toFixed(2);
       },
     },
     mounted() {
       this.getCurrencies();
+      this.doubler();
     },
     methods: {
       getCurrencies: function () {

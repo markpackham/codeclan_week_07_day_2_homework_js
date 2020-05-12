@@ -10,14 +10,14 @@
   <body>
     <div id="app">
       <h1>Currency Converter</h1>
-      <p>Enter amount: <input type="number" v-model="amount" /></p>
+      <p>Enter amount: <input type="number" v-model="amount" min="1" /></p>
       <p>
         <label for="currency-select-from-euro"
           >Select a Currency To Convert From Euros:</label
         >
         <select id="currency-select-from-euro" v-model="currencyFromEuro">
           <option disabled value="">>Select a Currency</option>
-          <option v-for="(value, name) in currencies" :value="name"
+          <option v-for="(value, name) in currencies" :value="value"
             >{{name}}</option
           >
         </select>
@@ -28,26 +28,28 @@
         >
         <select id="currency-select-to-euro" v-model="currencyToEuro">
           <option disabled value="">>Select a Currency</option>
-          <option v-for="(value, name) in currencies" :value="name"
+          <option v-for="(value, name) in currencies" :value="value"
             >{{name}}</option
           >
         </select>
       </p>
-      <h3>Currency From Euros To</h3>
+
+      <h3>Currency From Euro</h3>
       <ul>
-        <li
-          v-for="(value, name) in currencies"
-          v-if="name === currencyFromEuro"
-        >
-          <p>{{ name }} : {{ value }}</p>
-          <p>{{ convertFromEuro }}</p>
+        <li v-for="currency in currencies" v-if="currencyFromEuro === currency">
+          <p>
+            Currency value at 1 Euro {{ currency }} - currency converted from
+            Euro: {{ convertFromEuro }}
+          </p>
         </li>
       </ul>
-      <h3>Currency Converted To Euro</h3>
+      <h3>Currency To Euro</h3>
       <ul>
-        <li v-for="(value, name) in currencies" v-if="name === currencyToEuro">
-          <p>{{ name }} : {{ value }}</p>
-          <p>{{ convertToEuro }}</p>
+        <li v-for="currency in currencies" v-if="currencyToEuro === currency">
+          <p>
+            Currency value at 1 Euro {{ currency }} - currency converted to
+            Euro: {{ convertToEuro }}
+          </p>
         </li>
       </ul>
     </div>
