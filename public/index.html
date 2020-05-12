@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/bundle.js"></script>
+    <title>To Do List</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Currency Converter</h1>
+      <p>Enter amount: <input type="number" v-model="amount" /></p>
+      <ul>
+        <li v-for="currency in currencies">
+          <p>{{currency}}</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
