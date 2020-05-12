@@ -17,8 +17,8 @@
         >
         <select id="currency-select-from-euro" v-model="currencyFromEuro">
           <option disabled value="">>Select a Currency</option>
-          <option v-for="currency in currencies" :value="currency"
-            >{{currency.rates}}</option
+          <option v-for="(value, name) in currencies" :value="name"
+            >{{name}}</option
           >
         </select>
       </p>
@@ -28,14 +28,24 @@
         >
         <select id="currency-select-to-euro" v-model="currencyToEuro">
           <option disabled value="">>Select a Currency</option>
-          <option v-for="currency in currencies" :value="currency"
-            >{{currency.rates}}</option
+          <option v-for="(value, name) in currencies" :value="name"
+            >{{name}}</option
           >
         </select>
       </p>
+      <h3>Currency From Euros To</h3>
       <ul>
-        <li v-for="currency in currencies">
-          <p>{{currency}}</p>
+        <li
+          v-for="(value, name) in currencies"
+          v-if="name === currencyFromEuro"
+        >
+          <p>{{ name }} : {{ value }}</p>
+        </li>
+      </ul>
+      <h3>Currency Converted To Euro</h3>
+      <ul>
+        <li v-for="(value, name) in currencies" v-if="name === currencyToEuro">
+          <p>{{ name }} : {{ value }}</p>
         </li>
       </ul>
     </div>
