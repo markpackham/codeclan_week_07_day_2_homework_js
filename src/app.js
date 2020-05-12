@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     data: {
       currencies: [],
       amount: 0,
+      selectedCurrency: null,
     },
     computed: {},
     mounted() {

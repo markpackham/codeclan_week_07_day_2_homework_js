@@ -11,6 +11,13 @@
     <div id="app">
       <h1>Currency Converter</h1>
       <p>Enter amount: <input type="number" v-model="amount" /></p>
+      <label for="currency-select">Select a Currency:</label>
+      <select id="currency-select" v-model="selectedCurrency">
+        <option disabled value="">>Select a Currency</option>
+        <option v-for="currency in currencies" :value="currency"
+          >{{currency.rates}}</option
+        >
+      </select>
       <ul>
         <li v-for="currency in currencies">
           <p>{{currency}}</p>
