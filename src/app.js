@@ -8,14 +8,16 @@ document.addEventListener("DOMContentLoaded", () => {
       currency: 0,
       amount: 1,
       currencyFromEuro: 0,
-      currencyToEuro: 0.1,
+      currencyToEuro: 0,
     },
     computed: {
       convertFromEuro: function () {
         return parseFloat(this.amount * this.currencyFromEuro).toFixed(2);
       },
       convertToEuro: function () {
-        return parseFloat(this.amount / this.currencyToEuro).toFixed(2);
+        if (this.currencyToEuro != 0) {
+          return parseFloat(this.amount / this.currencyToEuro).toFixed(2);
+        }
       },
     },
     mounted() {
